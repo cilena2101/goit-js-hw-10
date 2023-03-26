@@ -27,6 +27,7 @@ function onInput(evt) {
 }
 
 function createMarkup(array) {	
+	countryInfoRef.innerHTML = '';
   if (array.length === 1) {
     countryListRef.innerHTML = '';
     return markupCountry(array);
