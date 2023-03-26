@@ -19,13 +19,14 @@ function onInput(evt) {
       .then(data => {
         createMarkup(data);
       })
-      .catch(error => {
+		 .catch(error => {
+				countryInfoRef.innerHTML = '';
         Notify.failure('Oops, there is no country with that name');
 			});		
   }
 }
 
-function createMarkup(array) {
+function createMarkup(array) {	
   if (array.length === 1) {
     countryListRef.innerHTML = '';
     return markupCountry(array);
