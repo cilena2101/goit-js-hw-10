@@ -14,17 +14,20 @@ searchBoxRef.addEventListener('input', debounce(onInput, DEBOUNCE_DELAY));
 function onInput(evt) {
   let nameCountry = evt.target.value.trim();
 
-  if (nameCountry) {
-   return fetchCountries(nameCountry)
-      .then(data => {
-        createMarkup(data);
-      })
-		 .catch(error => {
+	if (nameCountry) {
+		return fetchCountries(nameCountry)
+			.then(data => {
+				createMarkup(data);
+			})
+			.catch(error => {
 				countryInfoRef.innerHTML = '';
-        Notify.failure('Oops, there is no country with that name');
-			});		
-  }
-}
+				Notify.failure('Oops, there is no country with that name');
+			});
+	} else {
+		countryListRef.innerHTML = '';
+		countryInfoRef.innerHTML = '';
+	}
+	}		
 
 function createMarkup(array) {	
 	countryInfoRef.innerHTML = '';
